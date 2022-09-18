@@ -1,17 +1,14 @@
 const grid = document.querySelector('.grid');
+let sizeOfGrid = 100;
 
 function createGrid(num) {
-    for (let i = 0; i < num; i++) {
-        const row = document.createElement('div');
-        row.classList.add('grid-row');
-
-        for (let j = 0; j < num; j++) {
-            const gridBox = document.createElement('div');
-            gridBox.classList.add('box');
-            row.appendChild(gridBox);
-        }
-        grid.appendChild(row);
+    let area = num * num;
+    for (let i = 0; i <= area; i++) {
+        let box = document.createElement('div');
+        box.classList.add('box');
+        grid.style.gridTemplateColumns = `repeat(${num}, 1fr)`
+        grid.style.gridTemplateRows = `repeat(${num}, 1fr)`
+        grid.appendChild(box)
     }
 }
-
-createGrid(16);
+createGrid(sizeOfGrid);
