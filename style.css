@@ -9,6 +9,16 @@
 h1 {
     text-align: center;
 }
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
 .box {
-    border: 0.1mm solid;
+    border: 1px solid;
+}
+
+.selected {
+    background-color: black;
 }

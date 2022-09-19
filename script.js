@@ -1,5 +1,5 @@
 const grid = document.querySelector('.grid');
-let sizeOfGrid = 100;
+let sizeOfGrid = 16;
 
 function createGrid(num) {
     let area = num * num;
@@ -12,3 +12,14 @@ function createGrid(num) {
     }
 }
 createGrid(sizeOfGrid);
+
+const divs = document.querySelectorAll('.box')
+
+divs.forEach(div => {
+    div.addEventListener('mouseover', (event) => {
+        event.target.classList.add('selected');
+
+    }
+    )
+})
+
