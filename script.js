@@ -1,5 +1,6 @@
 const grid = document.querySelector('.grid');
-let sizeOfGrid = 16;
+let resetButton = document.querySelector('.reset');
+let sizeOfGrid = 20;
 
 function createGrid(num) {
     let area = num * num;
@@ -17,9 +18,11 @@ const divs = document.querySelectorAll('.box')
 
 divs.forEach(div => {
     div.addEventListener('mouseover', (event) => {
-        event.target.classList.add('selected');
+        event.target.style.backgroundColor = '#000000';
+    });
+});
 
-    }
-    )
-})
 
+resetButton.addEventListener('click', function(){
+    window.location.reload();
+});
