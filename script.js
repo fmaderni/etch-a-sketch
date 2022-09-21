@@ -47,8 +47,6 @@ function displaySize(value) {
     size.innerText = `${value} x ${value}`;
 };
 
-
-
 slider.onmousemove = (e) => displaySize(e.target.value);
 slider.addEventListener('mouseup', changeSize);
 resetButton.addEventListener('click', clearGrid);
