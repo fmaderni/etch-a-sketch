@@ -1,6 +1,10 @@
 const grid = document.querySelector('.grid');
 const resetButton = document.querySelector('.reset');
 const slider = document.querySelector('.slider');
+const blackButton = document.querySelector('.black');
+const rainButton = document.querySelector('.rainbow');
+let size = document.querySelector('.size');
+var color = 'black';
 
 function createGrid(num) {
     let area = num * num;
@@ -10,28 +14,43 @@ function createGrid(num) {
         grid.style.gridTemplateColumns = `repeat(${num}, 1fr)`
         grid.style.gridTemplateRows = `repeat(${num}, 1fr)`
         grid.appendChild(box)
+        box.addEventListener('mouseover', setColor);
     }
-    const divs = document.querySelectorAll('.box');
-    divs.forEach(div => {
-        div.addEventListener('mouseover', (event) => {
-            event.target.style.backgroundColor = '#000000';
-
-        });
-    });
 };
 
 createGrid(slider.value);
 
-function changeSize(){
+function changeSize() {
     grid.innerHTML = "";
     createGrid(slider.value);
 };
 
-function clearGrid(){
+function clearGrid() {
     var box = grid.querySelectorAll('div');
     box.forEach(pixel => pixel.style.backgroundColor = '#FFFFFF');
 };
 
+function changeColor(choice) {
+    color = choice;
+    return color;
+};
+
+function setColor() {
+    if (color === "random") {
+        this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    } else {
+        this.style.backgroundColor = "#000000";
+    }
+};
+
+function displaySize(value) {
+    size.innerText = `${value} x ${value}`;
+};
+
+
+
+slider.onmousemove = (e) => displaySize(e.target.value);
 slider.addEventListener('mouseup', changeSize);
 resetButton.addEventListener('click', clearGrid);
+
 

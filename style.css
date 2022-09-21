@@ -18,3 +18,8 @@ h1 {
 .box {
     border: 1px solid;
 }
+
+.size {
+    display: flex;
+    justify-content: center;
+}
