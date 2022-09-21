@@ -1,6 +1,6 @@
 const grid = document.querySelector('.grid');
-let resetButton = document.querySelector('.reset');
-let sizeOfGrid = 20;
+const resetButton = document.querySelector('.reset');
+const slider = document.querySelector('.slider');
 
 function createGrid(num) {
     let area = num * num;
@@ -11,18 +11,27 @@ function createGrid(num) {
         grid.style.gridTemplateRows = `repeat(${num}, 1fr)`
         grid.appendChild(box)
     }
-}
-createGrid(sizeOfGrid);
+    const divs = document.querySelectorAll('.box');
+    divs.forEach(div => {
+        div.addEventListener('mouseover', (event) => {
+            event.target.style.backgroundColor = '#000000';
 
-const divs = document.querySelectorAll('.box')
-
-divs.forEach(div => {
-    div.addEventListener('mouseover', (event) => {
-        event.target.style.backgroundColor = '#000000';
+        });
     });
-});
+};
 
+createGrid(slider.value);
 
-resetButton.addEventListener('click', function(){
-    window.location.reload();
-});
+function changeSize(){
+    grid.innerHTML = "";
+    createGrid(slider.value);
+};
+
+function clearGrid(){
+    var box = grid.querySelectorAll('div');
+    box.forEach(pixel => pixel.style.backgroundColor = '#FFFFFF');
+};
+
+slider.addEventListener('mouseup', changeSize);
+resetButton.addEventListener('click', clearGrid);
+
